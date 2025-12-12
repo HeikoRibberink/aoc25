@@ -8,11 +8,18 @@ fun main()
     val chars = trimmed.list()
     val Cons(dir, tail) = chars
     val num = tail.string.parse-int().expect("Should be integer")
-    val cur' = match dir
-      'L' -> cur - num
-      'R' -> cur + num
-    cur'.println
-    zeroes := zeroes + ((cur' + cur'.sign.int()) / 100).abs
+    val cur' = cur + (match dir
+      'L' -> ~num
+      'R' -> num
+    )
+    val change =
+      if cur' <= 0 then
+        abs((cur' - 1) / 100) - int(cur == 0)
+      else
+        cur' / 100
+    //(cur, num, cur', cur' % 100, change).println
+
+    zeroes := zeroes + change
     cur' % 100
 
   zeroes.println

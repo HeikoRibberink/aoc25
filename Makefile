@@ -1,19 +1,19 @@
 dir = day1
-in = test
-ex = 1
+in = input
+ex = p1
 srcs != find -iname "*.kk"
 flags =
 
+.PHONY: watch run all
 
 %: %.kk $(srcs)
 	koka -o $@ $<
 
-.PHONY: watch
 watch:
 	find -iname "*.kk" | entr make run
 
-.PHONY: run
 run: $(dir)/$(ex)
 	chmod +x ./$<
-	time ./$< $(dir)/$(in)
+	time ./$< $(dir)/$(in).in
 
+all:
