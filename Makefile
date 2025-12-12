@@ -7,7 +7,7 @@ flags =
 .PHONY: watch run all
 
 %: %.kk $(srcs)
-	koka -o $@ $<
+	koka $(flags) -o $@ $<
 
 watch:
 	find -iname "*.kk" | entr make run
