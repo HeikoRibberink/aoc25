@@ -4,7 +4,7 @@ import hlib/patterns/common
 fun main()
   val input = input()
   val ranges = input.split(",")
-  ranges.map(trim).foldl(0) fn(cur, range)
+  ranges.map(trim).map fn(range)
     val [start, end] = range.split("-")
     val start-count = start.count
     val halved-start = parse-int(
@@ -30,4 +30,5 @@ fun main()
         else
           Nothing
       .sum
-    cur + range-total
+    range-total
+  .sum
